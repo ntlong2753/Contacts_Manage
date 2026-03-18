@@ -26,15 +26,7 @@ public class TxtFileHandler implements FileHandler{
             String line;
             int lineNumber = 0;
             while ((line = bufferedReader.readLine()) != null) {
-                lineNumber++;
-                line = line.trim();
-
-                if (line.isEmpty()) {
-                    continue;
-                }
-
                 String[] parts = line.split(",");
-
                 Contacts contact = new Contacts(parts[0].trim(),
                                                 parts[1].trim(),
                                                 parts[2].trim(),

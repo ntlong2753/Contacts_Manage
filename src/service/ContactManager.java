@@ -125,11 +125,6 @@ public class ContactManager implements Manager<Contacts> {
                 System.out.println("Số điện thoại không hợp lệ.");
                 return;
             }
-
-            if (checkPhoneNumber(phoneNumber)) {
-                System.out.println("Số điện thoại đã tồn tại");
-                return;
-            }
             break;
         }
 
@@ -165,7 +160,6 @@ public class ContactManager implements Manager<Contacts> {
         }
 
         txtFileHandler.save(FILE_PATH, contacts);
-
         System.out.println("Cập nhật thành công");
     }
 
