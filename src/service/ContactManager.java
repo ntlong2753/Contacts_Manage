@@ -111,54 +111,77 @@ public class ContactManager implements Manager<Contacts> {
 
     @Override
     public void update() {
-
         System.out.println("------ Cập nhật danh bạ ------");
         System.out.println("Để trống nếu muốn giữ thông tin cũ");
 
-        // số điện thoại
-        while (true) {
-            System.out.println("Nhập số điện thoại: ");
-            String phoneNumber = sc.nextLine();
-            checkPhoneNumber(phoneNumber);
+        // nhập số điện thoại cần sửa
+        System.out.print("Nhập số điện thoại cần cập nhật: ");
+        String phoneNumber = sc.nextLine();
 
-            if (!phoneValidator.checkPhone(phoneNumber)) {
-                System.out.println("Số điện thoại không hợp lệ.");
-                return;
-            }
-            break;
+        if (!phoneValidator.checkPhone(phoneNumber)) {
+            System.out.println("Số điện thoại không hợp lệ.");
+            return;
+        }
+
+        Contacts contactToUpdate = finByPhongNumber(phoneNumber);
+        if (contactToUpdate == null) {
+            return;
         }
 
         // tên
-        System.out.println("Nhập tên: ");
+        System.out.print("Tên (" + contactToUpdate.getName() + "): ");
         String name = sc.nextLine();
+        if (!name.isEmpty()) {
+            contactToUpdate.setName(name);
+        }
 
         // giới tính
-        System.out.print("Nhập giới tính: ");
+        System.out.print("Giới tính (" + contactToUpdate.getGender() + "): ");
         String gender = sc.nextLine();
+        if (!gender.isEmpty()) {
+            contactToUpdate.setGender(gender);
+        }
 
         // nhóm
-        System.out.print("Nhập nhóm: ");
+        System.out.print("Nhóm (" + contactToUpdate.getGroup() + "): ");
         String group = sc.nextLine();
+        if (!group.isEmpty()) {
+            contactToUpdate.setGroup(group);
+        }
 
         // địa chỉ
-        System.out.print("Nhập địa chỉ: ");
+        System.out.print("Địa chỉ (" + contactToUpdate.getAddress() + "): ");
         String address = sc.nextLine();
+        if (!address.isEmpty()) {
+            contactToUpdate.setAddress(address);
+        }
 
         // ngày sinh
-        System.out.print("Nhập ngày sinh: ");
+        System.out.print("Ngày sinh (" + contactToUpdate.getBithDate() + "): ");
         String bithDate = sc.nextLine();
+        if (!bithDate.isEmpty()) {
+            contactToUpdate.setBithDate(bithDate);
+        }
 
         // email
         while (true) {
-            System.out.println("Nhập địa chỉ email: ");
+            System.out.print("Email (" + contactToUpdate.getEmail() + "): ");
             String email = sc.nextLine();
 
-            if (!emailValidator.checkEmail(email)) {
-                System.out.println("Địa chỉ email không hợp lệ.");
+            if (email.isEmpty()) {
+                break;
             }
+
+            if (!emailValidator.checkEmail(email)) {
+                System.out.println("Email không hợp lệ.");
+                continue;
+            }
+
+            contactToUpdate.setEmail(email);
             break;
         }
 
+        // lưu file
         txtFileHandler.save(FILE_PATH, contacts);
         System.out.println("Cập nhật thành công");
     }
@@ -168,6 +191,7 @@ public class ContactManager implements Manager<Contacts> {
         Contacts contact = finByPhongNumber(phoneNumber);
         contacts.remove(contact);
         txtFileHandler.save(FILE_PATH, contacts);
+
     }
 
     @Override
