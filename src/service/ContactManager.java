@@ -165,6 +165,7 @@ public class ContactManager implements Manager<Contacts> {
         }
 
         txtFileHandler.save(FILE_PATH, contacts);
+
         System.out.println("Cập nhật thành công");
     }
 

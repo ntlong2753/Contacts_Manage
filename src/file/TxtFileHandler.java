@@ -35,11 +35,6 @@ public class TxtFileHandler implements FileHandler{
 
                 String[] parts = line.split(",");
 
-                if (parts.length != 7) {
-                    System.out.println("Cảnh báo: Dòng " + lineNumber + " không đúng định dạng (cần 7 trường, có " + parts.length + " trường). Bỏ qua.");
-                    continue;
-                }
-
                 Contacts contact = new Contacts(parts[0].trim(),
                                                 parts[1].trim(),
                                                 parts[2].trim(),
@@ -67,7 +62,6 @@ public class TxtFileHandler implements FileHandler{
                     contacts.getEmail();
             bufferedWriter.write(data);
             bufferedWriter.newLine();
-            System.out.println("Lưu thông tin thành công");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
