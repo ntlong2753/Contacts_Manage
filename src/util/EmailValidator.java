@@ -1,11 +1,12 @@
 package util;
 
-public class NameValidator {
-    private static final String NAME_REGEX = "^[A-Za-zÀ-ỹ]+(\\s[A-Za-zÀ-ỹ]+)+$";
-    public static boolean checkName(String name) {
-        if (name == null || name.trim().isEmpty()) {
+public class EmailValidator {
+    private static final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+
+    public static boolean checkEmail(String email) {
+        if (email == null || email.trim().isEmpty()) {
             return false;
         }
-        return name.matches(NAME_REGEX);
-        }
+        return email.matches(EMAIL_REGEX);
+    }
 }

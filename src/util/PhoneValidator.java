@@ -1,6 +1,6 @@
 package util;
 
-public class z {
+public class PhoneValidator {
     private static final String PHONE_REGEX = "^0[0-9]{9,10}$";
 
     public static boolean checkPhone(String phone) {

@@ -1,0 +1,15 @@
+1. Thêm người liên hệ
+- Số điện thoại
+- Tên (giới hạn tối đa 16 ký tự)
+2. Xóa người liên hệ
+- Tìm kiếm theo số điện thoại
+3. Xem danh bạ
+4. Tìm kiếm danh bạ
+- Tìm kiếm theo tên người liên hệ
+- Tìm kiếm theo chữ cái
+- Tìm kiếm theo số điện thoại
+- Tìm kiếm theo nhà mạng
+5. Sửa người liên hệ
+- Tìm kiếm theo số điện thoại
+    + Số điện thoại
+    + Tên (giới hạn tối đa 16 ký tự)
